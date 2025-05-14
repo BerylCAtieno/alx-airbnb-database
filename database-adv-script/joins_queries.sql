@@ -24,6 +24,7 @@ SELECT
   r.created_at
 FROM "Property" p
 LEFT JOIN "Review" r ON p.property_id = r.property_id;
+ORDER BY p.property_id;
 
 
 -- FULL OUTER JOIN – All Users and All Bookings
