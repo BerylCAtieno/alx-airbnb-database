@@ -1,4 +1,5 @@
 -- Initial complex query: Retrieve bookings with user, property, and payment details
+
 SELECT 
     b.booking_id,
     b.start_date,
@@ -19,7 +20,11 @@ SELECT
 FROM "Booking" b
 JOIN "User" u ON b.user_id = u.user_id
 JOIN "Property" p ON b.property_id = p.property_id
-LEFT JOIN "Payment" pay ON b.booking_id = pay.booking_id;
+LEFT JOIN "Payment" pay ON b.booking_id = pay.booking_id
+WHERE b.status = 'confirmed'
+  AND p.price_per_night > 100
+  AND u.role = 'guest';
+
 
 -- analysis query
 EXPLAIN ANALYZE
